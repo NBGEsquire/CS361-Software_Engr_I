@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/scotus_bldg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Search Results</h1>
+                            <span class="subheading"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+		  <div align="center">
+	       <!--   <div style="float: left; width: 30%; padding: 1.5rem">
+		 <form action = "/adv_search" method = "POST" id="submitMessage" class="field has-addons"> 
+                 <input class="form-control input is-primary" name = "searchAll" id = "searchAll" type="text" style="width: 50%;" placeholder="Search Terms"><button type="submit" class="button is-primary" id="send">Search</button>
+		 </form>
+		 </div>  -->
+		 <div style="float: left; width: 30%; padding: 1.5rem">
+		 <form action="/">
+                 <button type="submit" class="button is-primary" id="send">New Search</button>
+                 </form>
+                 </div>
+                    <table>
+                        <col>
+                        <tr>
+                           <th colspan="2">Name</th>
+                           <th colspan="2">Term of Court</th>	
+                           <th colspan="3">Question(s) Presented</th>
+                           <th colspan="3">Case Description</th>
+                        </tr>
+                     <tbody>
+                        <% for (var i=0; i<case_search.length; i++) { %>
+                        <tr>
+                           <td colspan="2"><a  href=/argument?audio=<%=case_search[i].name%>><%= case_search[i].name %></a></td>
+                           <td colspan="2"> <%= case_search[i].term %> </td>
+                           <td colspan="3"> <%= case_search[i].question %> </td>
+                           <td colspan="3"> <%= case_search[i].description %> </td>
+                        </tr>
+                       <% } %>
+                      </tbody>
+                    </table>
+		    </div>
+                    <!-- Pager-->
+                 <!--   <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">See More"→</a></div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+	<!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/gavel.jpeg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>SCOTUS Case  Search</h1>
+                            <span class="subheading">A Supreme Court App</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+		            <span class="subheading"><i><b>Note</b>: For many older cases there is not a question presented or description; please try searching by name or year</i></span>
+                            <form action="/adv_search" method="POST">
+				<div class="control-group">
+                                <div class="form-group floating-label-form-group controls">
+                                    <input class="form-control" id="name" name="name"  type="text" placeholder="Enter a case name..." />
+                                    <label for="name">Search Case Name</label>
+                                </div>
+				</div>
+				<div class="control-group">
+                                <div class="form-group floating-label-form-group controls">
+                                    <input class="form-control" id="term" name="term"  type="text" maxlength="4"  placeholder="Search Terms of Court (i.e., 2010)" />
+                                    <label for="term">Search Court Term</label>
+                                </div>
+				</div>
+				<div class="control-group">
+                                <div class="form-group floating-label-form-group controls">
+                                    <input class="form-control" id="question" name="question"  type="text" placeholder="Search Questions Presented" />
+                                    <label for="question">Search Questions Presented</label>
+                                </div>
+				</div>
+				<div class="control-group">
+                                <div class="form-group floating-label-form-group controls">
+                                    <input class="form-control" id="description" name="description"  placeholder="Search Case Descriptions" />
+                                    <label for="description">Search Case Descriptions</label>
+                                </div>
+				</div>
+                                <br />
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>

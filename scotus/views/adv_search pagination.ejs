@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header'); -%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar'); -%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/scotus_bldg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Search Results</h1>
+                            <span class="subheading"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+		  <div align="center"> 
+                    <table>
+                        <tr>
+                           <th colspan="2">Name</th>
+                           <th colspan="2">Term of Court</th>
+                           <th colspan="3">Question(s) Presented</th>
+                           <th colspan="3">Case Description</th>
+                        </tr>
+                        <% for (var i=0; i<case_search.length; i++) { %>
+                        <tr>
+                           <td colspan="2"><a href=<%= case_search[i].href %>><%= case_search[i].name %></a></td>
+                           <td colspan="2"> <%= case_search[i].term %> </td>
+                           <td colspan="3"> <%= case_search[i].question %> </td>
+                           <td colspan="3"> <%= case_search[i].description %> </td>
+                        </tr>
+                       <% } %>
+                    </table>
+                    <!-- Pager-->
+ 		<% if (pages > 0) { %>
+                <ul class="pagination text-center">
+                    <% if (current == 1) { %>
+                        <li class="disabled"><a>First</a></li>
+                    <% } else { %>
+                        <li><a href="/adv_search/1">First</a></li>
+                    <% } %>
+                    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                    <% if (i !== 1) { %>
+                        <li class="disabled"><a>...</a></li>
+                    <% } %>
+                    <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                        <% if (i == current) { %>
+                            <li class="active"><a><%= i %></a></li>
+                        <% } else { %>
+                            <li><a href="/products/<%= i %>"><%= i %></a></li>
+                        <% } %>
+                        <% if (i == Number(current) + 4 && i < pages) { %>
+                            <li class="disabled"><a>...</a></li>
+                        <% } %>
+                    <% } %>
+                    <% if (current == pages) { %>
+                        <li class="disabled"><a>Last</a></li>
+                    <% } else { %>
+                        <li><a href="/adv_search/<%= pages %>">Last</a></li>
+                    <% } %>
+                </ul>
+            <% } %> 
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>
